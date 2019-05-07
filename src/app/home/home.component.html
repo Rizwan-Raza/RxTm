@@ -1,0 +1,11 @@
+<mat-card *ngIf="uData!=null">Hello, I'm <h1>{{uData.name}}</h1>
+  <p>{{uData.bio}}</p>
+  <p>{{uData.company}}</p>
+  <p>{{uData.location}}</p>
+</mat-card>
+<mat-card color="primary" style="width:300px">
+  <p>{{uData.public_repos}}</p>
+</mat-card>
+<mat-card color="primary" style="width:300px">
+  <p>{{uData.public_gists}}</p>
+</mat-card>

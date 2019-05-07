@@ -1,0 +1,17 @@
+<div class="top-banner" *ngIf="uData!=null">
+  <div class="flex">
+    <img src="{{uData.avatar_url}}" width="100px" style="filter: invert(1); transform: rotate(90deg)" />
+    <br />
+    <span>{{uData.name}}</span>
+  </div>
+</div>
+<mat-toolbar color="primary">
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+    *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+  </button>
+  <div class="center">
+    <button mat-button>Home</button><button mat-button>About</button><button mat-button>Portfolio</button><button
+      mat-button>Contact</button>
+  </div>
+</mat-toolbar>
