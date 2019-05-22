@@ -1,17 +1,36 @@
-<div class="top-banner" *ngIf="uData!=null">
-  <div class="flex">
-    <img src="{{uData.avatar_url}}" width="100px" style="filter: invert(1); transform: rotate(90deg)" />
-    <br />
-    <span>{{uData.name}}</span>
-  </div>
-</div>
-<mat-toolbar color="primary">
-  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
-    *ngIf="isHandset$ | async">
-    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-  </button>
-  <div class="center">
-    <button mat-button>Home</button><button mat-button>About</button><button mat-button>Portfolio</button><button
-      mat-button>Contact</button>
-  </div>
-</mat-toolbar>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)">
+
+    <mat-toolbar>Rex Terminous</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/">Home</a>
+      <a mat-list-item routerLink="#">About</a>
+      <a mat-list-item routerLink="#">Portfolio</a>
+      <a mat-list-item routerLink="#">Contact</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="top-banner" *ngIf="uData!=null">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="flex">
+        <img src="{{uData.avatar_url}}" width="100px" style="filter: invert(1); transform: rotate(90deg)" />
+        <br />
+        <span>{{uData.name}}</span>
+      </div>
+    </div>
+    <mat-toolbar color="primary" *ngIf="!(isHandset$ | async)">
+      <div class="center">
+        <button mat-button>Home</button>
+        <button mat-button>About</button>
+        <button mat-button>Portfolio</button>
+        <button mat-button>Contact</button>
+      </div>
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
